@@ -140,6 +140,14 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
+gulp.task('serveprod', function() {
+  connect.server({
+    root: [__dirname],
+    port: process.env.PORT || 5000, // localhost:5000
+    livereload: false
+  });
+});
+
 gulp.task('serve:dist', () => {
   browserSync({
     notify: false,
