@@ -1,5 +1,6 @@
 // generated on 2016-08-10 using generator-webapp 2.1.0
 const gulp = require('gulp');
+const connect = require('gulp-connect');
 const browserify = require('browserify');
 const babelify = require('babelify');
 const source = require('vinyl-source-stream');
