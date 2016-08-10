@@ -21,7 +21,7 @@ gulp.task('styles', () => {
     }))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(gulp.dest('./public/styles'))
     .pipe(reload({stream: true}));
 });
 
@@ -33,7 +33,7 @@ gulp.task('scripts', () => {
     .transform(babelify)
     .bundle()
     .pipe(source('main.js'))
-    .pipe(gulp.dest('./.tmp/scripts'));
+    .pipe(gulp.dest('./public/scripts'));
   /*return gulp.src('app/scripts/!**!/!*.js')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
@@ -51,7 +51,7 @@ gulp.task('scripts:test', () => {
     .transform(babelify)
     .bundle()
     .pipe(source('test.js'))
-    .pipe(gulp.dest('./.tmp/scripts'));
+    .pipe(gulp.dest('./public/scripts'));
 });
 
 function lint(files, options) {
@@ -149,8 +149,8 @@ gulp.task('serveprod', function() {
     middleware: (connect) => {
       return [
         connect().use('/bower_components', connect.static('bower_components')),
-        connect().use('/scripts', connect.static('.tmp/scripts')),
-        connect().use('/styles', connect.static('.tmp/styles'))
+        connect().use('/scripts', connect.static('public/scripts')),
+        connect().use('/styles', connect.static('public/styles'))
       ];
     }
   });
