@@ -90,5 +90,18 @@ describe('Gameplay', () => {
       ];
       expect(game.getWinner()).toEqual(2);
     });
+
+    it('should declare the match a draw if no one wins within the maximum number of moves allowed', () => {
+      game.board = [
+        [2, 2, 2, 1, 2, 2, 2],
+        [1, 1, 1, 2, 1, 1, 1],
+        [2, 2, 2, 1, 2, 2, 2],
+        [1, 1, 1, 2, 1, 1, 1],
+        [2, 2, 2, 1, 2, 2, 2],
+        [1, 1, 1, 2, 1, 1, 1]
+      ];
+      game.moveCount = game.rows * game.columns;
+      expect(game.getWinner()).toEqual(-1);
+    });
   });
 });

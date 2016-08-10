@@ -15,7 +15,7 @@ export default class {
   }
 
   dropDisc(player, columnIndex) {
-    for (let i = this.rows - 1; i > 0; i--) {
+    for (let i = this.rows - 1; i >= 0; i--) {
       if (this.board[i][columnIndex] === 0) {
         this.board[i][columnIndex] = player;
         this.moveCount++;
@@ -26,13 +26,6 @@ export default class {
   }
 
   getWinner() {
-    let maxMoves = this.rows * this.columns;
-
-    //draw
-    if (this.moveCount === maxMoves) {
-      return -1;
-    }
-
     //vertical
     for (let row = 0; row < Math.ceil(this.rows / 2); row++) {
       for (let column = 0; column < this.columns; column++) {
@@ -82,6 +75,12 @@ export default class {
           return this.board[row][column];
         }
       }
+    }
+
+    //draw
+    let maxMoves = this.rows * this.columns;
+    if (this.moveCount === maxMoves) {
+      return -1;
     }
 
     //no winner yet
