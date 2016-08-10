@@ -143,7 +143,7 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
 
 gulp.task('serveprod', function() {
   connect.server({
-    root: [__dirname],
+    root: [__dirname + '/app'],
     port: process.env.PORT || 5000, // localhost:5000
     livereload: false
   });
