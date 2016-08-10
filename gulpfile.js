@@ -145,7 +145,14 @@ gulp.task('serveprod', function() {
   connect.server({
     root: [__dirname + '/app'],
     port: process.env.PORT || 5000, // localhost:5000
-    livereload: false
+    livereload: false,
+    middleware: (connect) => {
+      return [
+        connect().use('/bower_components', connect.static('bower_components')),
+        connect().use('/scripts', connect.static('.tmp/scripts')),
+        connect().use('/styles', connect.static('.tmp/styles'))
+      ];
+    }
   });
 });
 
