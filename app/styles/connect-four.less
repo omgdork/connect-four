@@ -1,0 +1,53 @@
+@disc-size: 50px;
+@player1-color: red;
+@player2-color: blue;
+
+.game-container {
+  .board {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0 auto;
+    table-layout: fixed;
+
+    td {
+      border: 1px solid #000;
+      box-sizing: content-box;
+      cursor: pointer;
+      height: @disc-size;
+      padding: 10px;
+      width: @disc-size;
+
+      .disc {
+        height: @disc-size;
+        width: @disc-size;
+      }
+    }
+  }
+
+  .message {
+    vertical-align: middle;
+
+    .disc {
+      display: inline-block;
+      height: 20px;
+      margin-right: 5px;
+      vertical-align: middle;
+      width: 20px;
+    }
+  }
+
+  .disc {
+    border-radius: 50%;
+    display: block;
+
+    &.disc-player- {
+      &1 {
+        background: @player1-color;
+      }
+
+      &2 {
+      background: @player2-color;
+      }
+    }
+  }
+}
